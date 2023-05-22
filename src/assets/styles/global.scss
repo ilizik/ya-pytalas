@@ -1,0 +1,28 @@
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url('https://fonts.cdnfonts.com/css/tt-livret-subhead-trl');
+
+* {
+  box-sizing: border-box;
+};
+
+body {
+  // font-family: 'TT Livret Subhead Trl', sans-serif;
+  font-family: 'Satoshi', sans-serif;
+  margin: 0;
+  padding: 0;
+};
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.container {
+  padding: 0 15px;
+  max-width: 1110px;
+  margin: auto;
+}
