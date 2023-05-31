@@ -2,8 +2,7 @@
   import { ref } from 'vue';
   import { onMounted } from 'vue';
   import api from '@/api';
-  import Header from '@/components/Layout/Header.vue'
-  import Footer from '@/components/Layout/Footer.vue'
+  import Catalog from '@/components/Catalog.vue'
   
   const products = ref([])
 
@@ -15,14 +14,7 @@
 
 <template>
   <div>
-    <div class="container">
-      <Header/>
-      <router-view/>
-    </div>
-    <Footer/>
+    <Catalog :products="products"/>  
   </div>
 </template>
 
-<style lang="scss">
-  @import './src/assets/styles/global.scss'
-</style>

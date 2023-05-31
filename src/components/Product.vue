@@ -1,8 +1,8 @@
 <template>
     <div class="product">
-        <a class="product-image-link" href="#">
+        <router-link :to="`/${id}`" class="product-image-link" href="#">
             <img class="product-image" :src="image" :alt="title">
-        </a>
+        </router-link>
         <button class="product-like">
             <img class="product-like-icon" src="/svg/like.svg" alt="fav">
         </button>
@@ -10,9 +10,9 @@
             <a href="" class="product-name">{{title}}</a>
             <p class="product-price">{{price}} $</p>    
         </div>
-        <a href="#">
-            <img class="product-card" src="/svg/to_tovar.svg" alt="to card">
-        </a>
+        <button @click="cartStore.addToCart(product, 1)">
+            <img class="product-card" src="/svg/to_kart.svg" alt="to card">
+        </button>
     </div>
 </template>
 

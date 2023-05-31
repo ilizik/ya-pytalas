@@ -12,6 +12,11 @@ body {
   padding: 0;
 };
 
+p, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
 button {
   padding: 0;
   border: none;
@@ -19,6 +24,20 @@ button {
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+}
+
+ul {
+  list-style:none;
+}
+ul, li { 
+  margin: 0;
+  padding: 0;
+}
+.comment ul {
+  margin-left: 1em;
+}
+.comment ul ul ul ul ul {
+  margin-left: 0;
 }
 
 .container {

@@ -1,20 +1,24 @@
 <template>
     <header class="header">
         <div class="header-container">
-            <div class="header__left">
-                <img class="header__logo" src="/svg/logo_shop.svg" alt="logo">
-                <p class="header__name">P R O J E C T</p>    
-            </div>
+            <router-link class="header__link" :to="`/`">
+                <div class="header__left">
+                    <img class="header__logo" src="/svg/logo_shop.svg" alt="logo">
+                    <p class="header__name">P R O J E C T</p>    
+                </div>
+            </router-link>
+
             <div class="header__right">
                 <a href="#">
                     <div class="header__right__favourite">
                         <img class="heart" src="/svg/heart.svg" alt="favourite">
                     </div>
                 </a>
-                <div class="header__right__cart">
-                    <a href="#">
+                <div>
+                    <router-link :to="'/cart'" class="header__right__cart" href="#">
                         <img src="/svg/korzina.svg" alt="bag">
-                    </a>                        
+                        <span class="right__cart__number" v-if="cartStore.cart.length">{{cartStore.cart.length}}</span>
+                    </router-link>                        
                 </div>
             </div>
         </div>
@@ -40,7 +44,7 @@
 
     .header__name {
         color: #333333;
-        font-size: 16px;
+        font-size: 22px;
     };
 
     .header__left, .header__right {
@@ -48,13 +52,40 @@
         align-items: center;
     };
 
-    .header__left {
+    .header__link {
         margin-right: auto;
-    };
+        text-decoration: none;
+    }
 
     .heart {
         width: 20px;
         margin-right: 30px;
     };
 
+    .header__right__cart {
+        position: relative;
+    }
+
+    .right__cart__number {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: #BA967D;
+        border-radius: 50%;
+        color: white;
+        font-size: 10px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: -50%;
+        bottom: 0;
+    }
+
 </style>
+
+<script setup>
+    import { useCartStore } from '@/store/cart.ts'
+
+    const cartStore = useCartStore()
+</script>
