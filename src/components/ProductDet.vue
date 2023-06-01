@@ -10,9 +10,9 @@
             <div class="product-quan">
                 <span class="quan-name">Quantity</span>
                 <div class="product-quantity">
-                    <span class="product-quantity-symbol" @click="ChangeQuantity('minus')">-</span>
+                    <span class="product-quantity-symbol" @click="quantity > 1 && quantity--">-</span>
                     <span class="product-quantity-value">{{quantity}}</span>
-                    <span class="product-quantity-symbol" @click="ChangeQuantity('plus')">+</span>
+                    <span class="product-quantity-symbol" @click="quantity++">+</span>
                 </div>
             </div>
             <div class="buttons">
@@ -40,15 +40,6 @@
 
     const quantity = ref(1)
     const cartStore = useCartStore()
-
-    const ChangeQuantity = (type) => {
-        if (type === ('minus')) {
-            quantity.value === 1 ? quantity.value = 1 : quantity.value --
-        }
-        if (type === ('plus')) {
-            quantity.value ++
-        }
-    }
 </script>
 
 <style lang="scss" scoped>

@@ -17,7 +17,7 @@
                 <div>
                     <router-link :to="'/cart'" class="header__right__cart" href="#">
                         <img src="/svg/korzina.svg" alt="bag">
-                        <span class="right__cart__number" v-if="cartStore.cart.length">{{cartStore.cart.length}}</span>
+                        <span class="right__cart__number" v-if="cartStore.totalItems">{{cartStore.totalItems}}</span>
                     </router-link>                        
                 </div>
             </div>
@@ -28,7 +28,7 @@
 <style lang="scss" scoped>
     .header {
       height: 100px;
-      padding-top: 60px; 
+      margin-top: 60px; 
       margin-bottom: 85px 
     };
 

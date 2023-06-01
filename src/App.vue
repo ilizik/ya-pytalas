@@ -14,7 +14,7 @@
 
 
 <template>
-  <div>
+  <div class="app">
     <div class="container">
       <Header/>
       <router-view/>
