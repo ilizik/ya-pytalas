@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
-export const useCartStore = defineStore('cartStore', {
+export const useCartStore = defineStore("cartStore", {
   state: () => ({
     cart: [],
   }),
@@ -18,8 +18,6 @@ export const useCartStore = defineStore('cartStore', {
       } else {
         this.cart.push({ product, count });
       }
-
-      console.log(this.cart);
     },
   },
 });

@@ -1,20 +1,18 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { onMounted } from 'vue';
-  import api from '@/api';
-  import Catalog from '@/components/Catalog.vue'
-  
-  const products = ref([])
+import { ref } from "vue";
+import { onMounted } from "vue";
+import api from "@/api";
+import Catalog from "@/components/Catalog.vue";
 
-  onMounted(async() => {
-    products.value = await api.getProducts();
-  })
+const products = ref([]);
+
+onMounted(async () => {
+  products.value = await api.getProducts();
+});
 </script>
-
 
 <template>
   <div>
-    <Catalog :products="products"/>  
+    <Catalog :products="products" />
   </div>
 </template>
-
