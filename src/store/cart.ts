@@ -13,9 +13,7 @@ export const useCartStore = defineStore("cartStore", {
     addToCart(product, count) {
       const cartItem = this.cart.find((item) => item.product.id === product.id);
 
-      if (cartItem) {
-        cartItem.count += count;
-      } else {
+      if (!cartItem) {
         this.cart.push({ product, count });
       }
     },
