@@ -1,3 +1,7 @@
+<template>
+  <Catalog :products="products" />
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { onMounted } from "vue";
@@ -11,8 +15,3 @@ onMounted(async () => {
 });
 </script>
 
-<template>
-  <div>
-    <Catalog :products="products" />
-  </div>
-</template>

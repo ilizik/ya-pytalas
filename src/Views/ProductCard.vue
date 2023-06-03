@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <ProductDet :product="currentProduct" />
-  </div>
+  <ProductDet :product="currentProduct" />
 </template>
 
 <script setup>
