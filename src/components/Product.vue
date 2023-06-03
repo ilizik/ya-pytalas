@@ -11,7 +11,9 @@
       />
     </button>
     <div class="product-info">
-      <a href="" class="product-name">{{ title }}</a>
+      <router-link :to="`/${id}`" href="#" class="product-name">{{
+        title
+      }}</router-link>
       <p class="product-price">{{ price }} $</p>
     </div>
     <button @click="addToCart">

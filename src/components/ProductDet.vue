@@ -22,11 +22,13 @@
       <div class="buttons">
         <button
           @click="cartStore.addToCart(product, quantity)"
-          class="cart-btn"
+          class="cart-btn btn"
         >
           Add to cart
         </button>
-        <button @click="addToFav" class="fav-btn">Save to favourites</button>
+        <button @click="favsStore.addToFavs(product)" class="fav-btn btn">
+          Save to favourites
+        </button>
       </div>
       <p class="product-descr">Description</p>
       <p class="product-description">{{ product.description }}</p>
@@ -36,6 +38,7 @@
 
 <script setup>
 import { useCartStore } from "@/store/cart.ts";
+import { useFavsStore } from "@/store/favs.ts";
 import { ref } from "vue";
 
 const props = defineProps({
@@ -48,6 +51,7 @@ const props = defineProps({
 
 const quantity = ref(1);
 const cartStore = useCartStore();
+const favsStore = useFavsStore();
 </script>
 
 <style lang="scss" scoped>
@@ -123,6 +127,10 @@ const cartStore = useCartStore();
 .quan-name {
   font-size: 22px;
   color: #333333;
+}
+
+.btn {
+  display: inherit;
 }
 .cart-btn {
   background-color: #ba967d;

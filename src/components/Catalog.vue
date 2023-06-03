@@ -22,7 +22,8 @@
             {{ category }}
           </option>
         </select>
-        <input class="checkbox" type="checkbox" /><label>Favourites</label>
+        <input class="checkbox" type="checkbox" v-model="showFavorites" />
+        <label>Favourites</label>
       </div>
       <select v-model="sortOption" class="filter">
         <option value="" class="option">Sort</option>
@@ -50,6 +51,9 @@
 <script setup>
 import { ref, computed } from "vue";
 import Product from "@/components/Product.vue";
+import { useFavsStore } from "@/store/favs.ts";
+import { filteredProducts as getFilteredProducts } from "@/sort/filter.ts";
+import { sortedProducts as getSortedProducts } from "@/sort/sort.ts";
 
 const props = defineProps({
   products: {
@@ -60,6 +64,10 @@ const props = defineProps({
 const searchValue = ref("");
 const sortOption = ref("");
 const selectedCategory = ref("");
+const favsStore = useFavsStore();
+const favoriteProducts = favsStore.favs;
+//console.log(favoriteProducts)
+const showFavorites = ref(false);
 
 const categories = computed(() => {
   const uniqueCategories = new Set(
@@ -69,38 +77,23 @@ const categories = computed(() => {
 });
 
 const filteredProducts = computed(() => {
-  return props.products.filter((product) => {
-    const title = product.title.toLowerCase();
-    const search = searchValue.value.toLowerCase();
-    const category = selectedCategory.value;
-
-    return (
-      title.includes(search) &&
-      (category === "" || product.category === category)
-    );
-  });
+  return getFilteredProducts(
+    props.products,
+    searchValue.value,
+    selectedCategory.value,
+    showFavorites.value,
+    favoriteProducts
+  );
 });
 
 const sortedProducts = computed(() => {
-  const products = filteredProducts.value;
-
-  if (sortOption.value === "priceAscending") {
-    return products.slice().sort((a, b) => a.price - b.price);
-  } else if (sortOption.value === "priceDescending") {
-    return products.slice().sort((a, b) => b.price - a.price);
-  } else if (sortOption.value === "alphaAscending") {
-    return products.slice().sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortOption.value === "alphaDescending") {
-    return products.slice().sort((a, b) => b.title.localeCompare(a.title));
-  }
-
-  return products;
+  return getSortedProducts(filteredProducts.value, sortOption.value);
 });
 </script>
 
 <style lang="scss" scoped>
 .catalog {
-  max-width: 923px;
+  width: 923px;
   margin: auto;
   &-products {
     display: flex;

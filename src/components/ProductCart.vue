@@ -4,7 +4,9 @@
       <img class="product-image" :src="product.image" :alt="product.title" />
     </router-link>
     <div class="product-info">
-      <a href="" class="product-name">{{ product.title }}</a>
+      <router-link :to="`/${id}`" href="#" class="product-name">{{
+        product.title
+      }}</router-link>
       <div>
         <p class="product-info-name">Price</p>
         <p class="product-price">{{ product.price }} $</p>
